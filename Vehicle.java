@@ -9,15 +9,15 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public abstract class Vehicle extends SimulatedObject implements Comparator<Vehicle>{
-	private List<Junction> itinerary;
-	private int maxSpeed;
-	private int speed;
-	private VehicleStatus status;
-	private Road road;
-	private int location;
-	private int contClass;
-	private int totalContamination;
-	private int totalDistance;
+	protected List<Junction> itinerary;
+	protected int maxSpeed;
+	protected int speed;
+	protected VehicleStatus status;
+	protected Road road;
+	protected int location;
+	protected int contClass;
+	protected int totalContamination;
+	protected int totalDistance;
 	
 	Vehicle(String id, int maxSpeed, int contClass, List<Junction> itinerary) throws IllegalArgumentException {
 		super(id);

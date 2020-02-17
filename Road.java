@@ -2,16 +2,19 @@ package simulator.model;
 
 import java.util.List;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public abstract class Road extends SimulatedObject {
-	private Junction srcJunc;
-	private Junction destJunc;	
-	private int length;
-	private int maxSpeed;
-	private int contLimit;
-	private int cuMaxSpeed;
-	private Weather weather;
-	private int totalCont;
-	private List <Vehicle> vehicles;
+	protected Junction srcJunc;
+	protected Junction destJunc;	
+	protected int length;
+	protected int maxSpeed;
+	protected int contLimit;
+	protected int cuMaxSpeed;
+	protected Weather weather;
+	protected int totalCont;
+	protected List <Vehicle> vehicles;
 	
 	Road(String id, Junction srcJunc, Junction destJunc, int maxSpeed, int contLimit, int length, Weather weather) {
 		super(id);
@@ -51,5 +54,16 @@ public abstract class Road extends SimulatedObject {
 			vehicles.sort(v);
 		}
 		// Hay que revisar los sorts, apuntes del profe 
+	}
+	public JSONObject report() throws JSONException {
+		
+			StringBuilder sb = new StringBuilder();
+			String id = "\" id \" :  \" " + this._id + "\",";
+			String sp = "\" speedlimit \" :   " + this.maxSpeed + ",";
+			String wea = "\" weather \" :  \" " + this.weather + ",";
+			String co2= "\" co2 \" :  \" " + this.contLimit + ",";
+			String ve = "\" vehicles \" :  \" " + this.vehicles + ",";
+			
+			return new JSONObject( sb.append(id).append(sp).append(wea).append(co2).append(ve).toString());
 	}
 }
