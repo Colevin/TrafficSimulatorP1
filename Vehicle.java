@@ -9,15 +9,15 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public abstract class Vehicle extends SimulatedObject implements Comparator<Vehicle>{
-	protected List<Junction> itinerary;
-	protected int maxSpeed;
-	protected int speed;
-	protected VehicleStatus status;
-	protected Road road;
-	protected int location;
-	protected int contClass;
-	protected int totalContamination;
-	protected int totalDistance;
+	private List<Junction> itinerary;
+	private int maxSpeed;
+	private int speed;
+	private VehicleStatus status;
+	private Road road;
+	private int location;
+	private int contClass;
+	private int totalContamination;
+	private int totalDistance;
 	
 	Vehicle(String id, int maxSpeed, int contClass, List<Junction> itinerary) throws IllegalArgumentException {
 		super(id);
@@ -31,7 +31,7 @@ public abstract class Vehicle extends SimulatedObject implements Comparator<Vehi
 		else
 			throw new IllegalArgumentException("Contamination has an invalid value");
 		
-		if(itinerary.lenght() > 2)
+		if(itinerary.size() > 2)
 			Collections.unmodifiableList(new ArrayList<>(itinerary));
 		else
 			throw new IllegalArgumentException("Itinery is not longh enough");

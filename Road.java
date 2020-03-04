@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
+//FALTA LA VISIBILIDAD DE TODOS LOS METODOS
 public abstract class Road extends SimulatedObject {
 	protected Junction srcJunc;
 	protected Junction destJunc;	
@@ -18,6 +18,12 @@ public abstract class Road extends SimulatedObject {
 	
 	Road(String id, Junction srcJunc, Junction destJunc, int maxSpeed, int contLimit, int length, Weather weather) {
 		super(id);
+		//AQUI HAY QUE HACER LO DE LAS EXCEPTIONS
+		this.srcJunc = srcJunc;
+		this.destJunc = destJunc;
+		this.maxSpeed = maxSpeed;
+		this.contLimit = contLimit;
+		this.length = length;
 	}
 	abstract void reduceTotalContamination(); //
 	abstract void updateSpeedLimit(); //
@@ -65,5 +71,8 @@ public abstract class Road extends SimulatedObject {
 			String ve = "\" vehicles \" :  \" " + this.vehicles + ",";
 			
 			return new JSONObject( sb.append(id).append(sp).append(wea).append(co2).append(ve).toString());
+	}
+	public Junction getDestJunc() {
+		return this.destJunc;
 	}
 }

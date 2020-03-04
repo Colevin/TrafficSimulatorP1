@@ -1,6 +1,12 @@
 package simulator.model;
 
 public class IntercityRoad extends Road {
+	IntercityRoad(String id, Junction srcJunc, Junction destJunc, int maxSpeed, int contLimit, int length,
+			Weather weather) {
+		super(id, srcJunc, destJunc, maxSpeed, contLimit, length, weather);
+	}
+
+
 	void reduceTotalContamination() {
 		int x = 0;
 		switch (this.weather) {
