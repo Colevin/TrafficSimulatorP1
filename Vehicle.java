@@ -8,7 +8,7 @@ import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public abstract class Vehicle extends SimulatedObject implements Comparator<Vehicle>{
+public class Vehicle extends SimulatedObject implements Comparator<Vehicle>{
 	private List<Junction> itinerary;
 	private int maxSpeed;
 	private int speed;
@@ -64,6 +64,9 @@ public abstract class Vehicle extends SimulatedObject implements Comparator<Vehi
 		
 	}
 	public void advance(int time) {
+		
+	}
+	public void moveToNextRoad() {
 		
 	}
 	public JSONObject report() throws JSONException {

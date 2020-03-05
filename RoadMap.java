@@ -1,6 +1,7 @@
 package simulator.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,7 +14,7 @@ public class RoadMap extends SimulatedObject{
 	private List<Road> ListRoads;
 	private List<Vehicle> ListVehicles;
 	private Map<String, Junction> JunctionsMap;
-	private Map<String, Road> RoadsMap; //map w junction Id and the junction itself
+	private Map<String, Road> RoadsMap; //map w junction Id and the road itself
 	private Map<String, Vehicle> VehiclesMap;  //map w vehicle Id and the vehicle
 	
 	
@@ -75,15 +76,27 @@ public class RoadMap extends SimulatedObject{
 		return v;
 	}
 	public List<Junction> getJunctions(){
-		
+		return Collections.unmodifiableList(ListJunctions);
+	}
+	public List<Road> getRoads(){
+		return Collections.unmodifiableList(ListRoads);
+	}
+	public List<Vehicle> getVehicles(){
+		return Collections.unmodifiableList(ListVehicles);
+	}
+	void reset() {
+		ListJunctions.removeAll(ListJunctions);
+		JunctionsMap.clear();
+		ListRoads.removeAll(ListRoads);
+		RoadsMap.clear();
+		ListVehicles.removeAll(ListVehicles);
+		VehiclesMap.clear();
 	}
 	@Override
 	void advance(int time) {
 		// TODO Auto-generated method stub
 		
 	}
-
-
 	@Override
 	public JSONObject report() {
 		// TODO Auto-generated method stub
