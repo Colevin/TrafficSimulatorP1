@@ -35,7 +35,7 @@ public abstract class Road extends SimulatedObject {
 	void exit(Vehicle v) {
 		vehicles.remove(v);
 	}
-	void setWeather(Weather w) throws IllegalArgumentException {
+	public void setWeather(Weather w) throws IllegalArgumentException {
 		if(w != null) {
 			this.weather = w;
 		}

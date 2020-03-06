@@ -8,7 +8,7 @@ import java.util.Map;
 
 import org.json.JSONObject;
 
-public class RoadMap extends SimulatedObject{
+public class RoadMap{
 
 	private List<Junction> ListJunctions;
 	private List<Road> ListRoads;
@@ -19,8 +19,7 @@ public class RoadMap extends SimulatedObject{
 	
 	
 	
-	RoadMap(String id) {
-		super(id);
+	RoadMap() {
 		this.ListJunctions = new ArrayList<>();
 		this.ListRoads = new ArrayList<>();
 		this.ListVehicles = new ArrayList<>();
@@ -92,15 +91,18 @@ public class RoadMap extends SimulatedObject{
 		ListVehicles.removeAll(ListVehicles);
 		VehiclesMap.clear();
 	}
-	@Override
-	void advance(int time) {
-		// TODO Auto-generated method stub
+	//public JSONObject report() {
 		
+	//}
+	//EXTRA
+	void advanceJunctions(int time) {
+		for(Junction j: ListJunctions) {
+			j.advance(time);
+		}
 	}
-	@Override
-	public JSONObject report() {
-		// TODO Auto-generated method stub
-		return null;
+	void advanceRoads(int time) {
+		for(Road r: ListRoads) {
+			r.advance(time);
+		}
 	}
-	
 }

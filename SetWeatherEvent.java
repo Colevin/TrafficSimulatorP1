@@ -16,13 +16,14 @@ public class SetWeatherEvent extends Event {
 
 	@Override
 	void execute(RoadMap map) {
-		for(int i = 0; i < ws.size(); i++) {
-			if(map.getId().equals(ws.get(i).getFirst())) {
-				map.getRoad(ws.get(i).getFirst()).setWeather(ws.get(i).getSecond());
-				//REViSARQ ESTO ESTE GUAY
+		for(Pair<String, Weather> p: ws) {
+			for(Road r: map.getRoads()) {
+				if(r.getId().equals(p.getFirst())){
+					r.setWeather(p.getSecond());
+			}
+				//EXCEPTION IF THE ROAD DOES NOT EXIs
 			}
 		}
-		
 	}
 
 }
